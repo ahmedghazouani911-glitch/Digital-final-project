@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1b34">
+<title>Ahmed Ghazweni — Portfolio numérique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f9f6;--sf:#fff;--ink:#10241a;--mu:#4a6254;--br:#047857;--ln:#d3e3d9;--hd:#047857;--ok:#047857;--ko:#b91c1c;--code:#0f2a1f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c1812;--sf:#13251c;--ink:#e5f1ea;--mu:#9bb4a5;--br:#3ddc9b;--ln:#254634;--hd:#0f3d2b;--ok:#3ddc9b;--ko:#f87171;--code:#08120d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0c1812;--sf:#13251c;--ink:#e5f1ea;--mu:#9bb4a5;--br:#3ddc9b;--ln:#254634;--hd:#0f3d2b;--ok:#3ddc9b;--ko:#f87171;--code:#08120d;color-scheme:dark}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Source Sans 3",system-ui,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hd);z-index:12}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.15;margin:0 0 .5em}
+h1{font-size:clamp(1.9rem,4vw,2.7rem)}h2{font-size:1.35rem;margin-top:1.8em}
+a{color:var(--br)}
+:focus-visible{outline:3px solid var(--br);outline-offset:2px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--hd);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
+header a{color:#fff;text-decoration:none;font:700 1.15rem "Bricolage Grotesque",sans-serif}
+header small{font:400 .9rem "Source Sans 3",sans-serif;opacity:.85;margin-left:8px}
+#th{background:transparent;color:#fff;border:1px solid #ffffff88;border-radius:8px;padding:6px 12px;font:inherit;cursor:pointer}
+.wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:210px minmax(0,1fr);gap:32px;padding:24px 16px 48px}
+aside nav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);display:flex;flex-direction:column;gap:2px}
+aside b{margin:14px 0 4px;color:var(--mu);font-weight:600;font-size:.95rem}
+aside a{display:block;padding:7px 10px;border-radius:8px;color:var(--ink);text-decoration:none}
+aside a:hover{background:var(--ln)}
+aside a[aria-current]{background:var(--br);color:var(--bg);font-weight:600}
+.lead{color:var(--mu);max-width:60ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-top:24px}
+.card{display:block;background:var(--sf);border:1px solid var(--ln);border-left:6px solid var(--c);border-radius:10px;padding:16px 18px;text-decoration:none;color:var(--ink)}
+.card:hover{border-color:var(--c)}
+.card h3{margin:0 0 4px;font-size:1.15rem}.card p{margin:0;color:var(--mu);font-size:.95rem}
+dl{display:grid;grid-template-columns:minmax(120px,max-content) 1fr;gap:8px 20px;max-width:75ch}
+dt{font-weight:600;color:var(--br)}dd{margin:0}
+ul{max-width:75ch;padding-left:1.2em}li{margin:.35em 0}
+pre{background:var(--code);color:#d7f5e4;padding:14px 16px;border-radius:8px;overflow-x:auto;font:14px/1.5 ui-monospace,Menlo,Consolas,monospace;max-width:75ch}
+.opts{display:grid;gap:10px;max-width:560px}
+.opt,.btn{font:inherit;text-align:left;background:var(--sf);color:var(--ink);border:2px solid var(--ln);border-radius:10px;padding:11px 14px;cursor:pointer}
+.btn{background:var(--br);color:var(--bg);border-color:var(--br);font-weight:600;text-align:center;margin-top:12px}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 18%,var(--sf))}
+.opt.ko{border-color:var(--ko);background:color-mix(in srgb,var(--ko) 15%,var(--sf))}
+.opt:disabled{color:var(--ink);cursor:default}
+.chk{display:flex;gap:10px;align-items:flex-start;margin:.5em 0}.chk input{width:20px;height:20px;margin-top:3px;accent-color:var(--br)}
+.big{font:700 2.4rem "Bricolage Grotesque",sans-serif;margin:.2em 0}
+details{background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:12px 16px;margin-top:32px;max-width:75ch}summary{cursor:pointer;font-weight:600}
+footer{text-align:center;color:var(--mu);font-size:.9rem;padding:0 16px 24px}
+@media(max-width:760px){.wrap{grid-template-columns:1fr;gap:12px}aside nav{position:static;flex-direction:row;overflow-x:auto;gap:6px;padding-bottom:6px}aside b{display:none}aside a{white-space:nowrap;border:1px solid var(--ln)}dl{grid-template-columns:1fr}dd{margin-bottom:8px}}
+@media(prefers-reduced-motion:no-preference){main{animation:in .25s ease-out}@keyframes in{from{opacity:.4}}}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1f7f3;--sf:#fff;--ink:#0a1f16;--mu:#46604f;--br:#047857;--ln:#d5e5db;--hd:#064e3b}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#07130e;--sf:#0e2019;--ink:#e8f5ee;--mu:#9bb8a9;--br:#34d399;--ln:#1d3a2c;--hd:#052e22}}
+:root[data-theme="dark"]{--bg:#07130e;--sf:#0e2019;--ink:#e8f5ee;--mu:#9bb8a9;--br:#34d399;--ln:#1d3a2c;--hd:#052e22}
+header{background:color-mix(in srgb,var(--hd) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid #ffffff22}
+header a:before{content:"I";display:inline-grid;place-items:center;width:30px;height:30px;margin-right:10px;border-radius:9px;background:#6ee7b7;color:#06291f;font:800 1.1rem "Bricolage Grotesque",sans-serif}
+aside nav{background:var(--sf);border:1px solid var(--ln);border-radius:20px;padding:10px}
+aside a{border-radius:12px}
+aside a[aria-current]{background:color-mix(in srgb,var(--br) 16%,var(--sf));color:var(--br);box-shadow:inset 3px 0 0 var(--br)}
+main h2:before{content:"";display:inline-block;width:8px;height:1.05em;vertical-align:-.15em;margin-right:.5em;border-radius:3px;background:var(--mc,var(--br))}
+.gl{font-family:"JetBrains Mono",ui-monospace,monospace;font-weight:700;color:color-mix(in srgb,var(--c) 75%,var(--ink))}
+.card{position:relative;overflow:hidden;min-height:170px;border:1px solid color-mix(in srgb,var(--c) 38%,var(--ln));border-radius:20px;padding:20px;background:color-mix(in srgb,var(--c) 8%,var(--sf))}
+.card .gl{display:block;font-size:2.6rem;line-height:1;margin-bottom:14px}
+.ep{font:inherit;text-align:left;cursor:pointer;width:100%}
+.ep:after{content:"▶ Écouter";position:absolute;right:18px;bottom:16px;font-weight:600;font-size:.9rem;color:color-mix(in srgb,var(--c) 75%,var(--ink))}
+.mh{display:flex;gap:22px;align-items:flex-start;margin-bottom:8px}
+.mh .gl{flex:none;display:grid;place-items:center;width:88px;height:88px;border-radius:24px;font-size:1.7rem;background:color-mix(in srgb,var(--c) 14%,var(--sf));border:1px solid color-mix(in srgb,var(--c) 40%,var(--ln))}
+.mh .btn{margin-top:6px}
+.hero{position:relative;overflow:hidden;border:1px solid #1f6b50;border-radius:28px;padding:clamp(28px,5vw,52px);color:#ecfdf5;background-color:#06291f;background-image:linear-gradient(rgba(110,231,183,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(110,231,183,.08) 1px,transparent 1px);background-size:28px 28px}
+.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);letter-spacing:-.02em;margin:0 0 .3em;max-width:14ch}
+.hero .lead{color:#b7e4cf}
+.hero+h2{margin-top:1.6em}
+.ty{font:500 1.05rem "JetBrains Mono",ui-monospace,monospace;color:#6ee7b7;min-height:1.6em;margin:0 0 1em}
+.ty:before{content:"$ ";color:#fcd34d}
+.ty u{display:inline-block;width:.6ch;height:1.1em;background:#6ee7b7;vertical-align:-.2em;margin-left:2px}
+@media(prefers-reduced-motion:no-preference){.ty u{animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.cta a{display:inline-block;padding:11px 18px;border-radius:999px;text-decoration:none;font-weight:600;background:#6ee7b7;color:#06291f}
+.cta a+a{background:transparent;color:#ecfdf5;border:1px solid #6ee7b788}
+.pick{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.chip{display:flex;align-items:center;gap:10px;font:inherit;font-weight:600;color:var(--ink);background:color-mix(in srgb,var(--c) 8%,var(--sf));border:1px solid color-mix(in srgb,var(--c) 40%,var(--ln));border-radius:999px;padding:8px 16px 8px 10px;cursor:pointer}
+.chip span{display:grid;place-items:center;min-width:34px;height:34px;padding:0 6px;border-radius:999px;background:var(--sf);font:700 .85rem "JetBrains Mono",monospace;color:color-mix(in srgb,var(--c) 75%,var(--ink))}
+.stage{background:#06291f;color:#ecfdf5;border:1px solid #1f6b50;border-radius:22px;padding:18px;margin:22px 0}
+.sh{display:flex;justify-content:space-between;gap:10px;font:600 1.15rem "Bricolage Grotesque",sans-serif}
+#pt{color:#9fd8c1;font-size:.95rem;font-weight:400}
+.bar{height:6px;border-radius:9px;background:#ffffff22;margin:12px 0}.bar i{display:block;height:100%;border-radius:9px;background:#6ee7b7;transition:width .3s}
+.ctl{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ctl button{width:42px;height:42px;border-radius:50%;border:1px solid #6ee7b755;background:transparent;color:#ecfdf5;font-size:1.05rem;cursor:pointer}
+.ctl .go{width:54px;height:54px;background:#6ee7b7;color:#06291f;font-size:1.3rem}
+.ctl label{margin-left:auto;font-size:.95rem;color:#b7e4cf}
+.ctl select{font:inherit;background:#0d3b2d;color:#ecfdf5;border:1px solid #6ee7b755;border-radius:8px;padding:4px 6px}
+.tr{position:relative;max-height:320px;overflow-y:auto;margin-top:14px;display:grid;gap:4px}
+.ln{margin:0;padding:8px 12px;border-radius:10px;border-left:3px solid transparent;color:#b7e4cf;cursor:pointer}
+.ln.hd{font-weight:600;color:#ecfdf5}
+.ln.on{background:#fcd34d22;border-left-color:#fcd34d;color:#fff}
+.ln b{color:#fcd34d;margin-right:6px}
+.note{font-size:.88rem;color:var(--mu);margin:12px 0 0}.stage .note{color:#9fd8c1}
+.opt:hover:not(:disabled){border-color:var(--br)}
+input[type=file]{max-width:100%;margin:6px 0 14px}audio{width:100%;max-width:560px}
+@media(max-width:760px){aside nav{background:none;border:0;padding:0 0 6px;border-radius:0}aside a{border-radius:999px}.mh{flex-direction:column}.ctl label{margin-left:0}}
+</style>
+<style>
+:root{--bg:#f2f6fd;--sf:#fff;--ink:#0b1b34;--mu:#4a5b78;--br:#1d4ed8;--ln:#d9e1f0;--hd:#0b1b34;--hv:#0b1b34;--hl:#7cb4ff;--ht:#b9c9e6;--hb:#27457a}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#060e1d;--sf:#0e1a30;--ink:#e8eefb;--mu:#9fb0cf;--br:#6ea8ff;--ln:#1c2d4d;--hd:#08142a}}
+:root[data-theme="dark"]{--bg:#060e1d;--sf:#0e1a30;--ink:#e8eefb;--mu:#9fb0cf;--br:#6ea8ff;--ln:#1c2d4d;--hd:#08142a}
+header a:before{content:"A";background:var(--hl);color:var(--hv)}
+.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(230px,1fr);gap:28px;align-items:center;color:#eef4ff;border-color:var(--hb);background-color:var(--hv);background-image:linear-gradient(rgba(124,180,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(124,180,255,.08) 1px,transparent 1px)}
+.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);max-width:none}
+.hero .lead,.ctl label,.ln{color:var(--ht)}
+.pt{margin:0 0 .6em;font:500 .9rem "JetBrains Mono",ui-monospace,monospace;color:var(--hl)}
+.ty,#pt,.stage .note{color:var(--hl)}.ty u,.bar i,.ctl .go{background:var(--hl)}
+.stage .note,#pt{color:var(--ht)}
+.cta a{background:var(--hl);color:var(--hv)}.cta a+a{background:transparent;color:#eef4ff;border-color:#7cb4ff88}
+.stage{background:var(--hv);border-color:var(--hb);color:#eef4ff}
+.ctl button{border-color:#7cb4ff55;color:#eef4ff}.ctl .go{color:var(--hv)}
+.ctl select{background:#12305c;color:#eef4ff;border-color:#7cb4ff55}
+.me{background:#ffffff0d;border:1px solid var(--hb);border-radius:20px;padding:20px}
+.me p{margin:0}.me .nm{font:700 1.25rem "Bricolage Grotesque",sans-serif}.me .sb{color:var(--ht);margin-bottom:12px}
+.av{width:60px;height:60px;border-radius:18px;background:var(--hl);color:var(--hv);display:grid;place-items:center;font:800 1.5rem "Bricolage Grotesque",sans-serif;margin-bottom:12px}
+.me dl{grid-template-columns:auto 1fr;gap:6px 14px;font-size:.95rem}.me dt{color:var(--hl)}.me dd{color:#eef4ff}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:14px 0 0}
+.stats div{background:var(--sf);border:1px solid var(--ln);border-radius:16px;padding:14px 16px;color:var(--mu);font-size:.95rem}
+.stats b{display:block;font:700 2rem "Bricolage Grotesque",sans-serif;color:var(--br)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.chips button{font:inherit;padding:7px 16px;border-radius:999px;border:1px solid var(--ln);background:var(--sf);color:var(--ink);cursor:pointer}
+.chips .on{background:var(--br);color:var(--bg);border-color:var(--br)}
+.card small{display:block;color:var(--mu);font-weight:600;margin-bottom:2px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.tags i{font-style:normal;font-size:.8rem;padding:2px 10px;border-radius:999px;background:var(--sf);border:1px solid var(--ln);color:var(--mu)}
+.feat{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.feat div{background:var(--sf);border:1px solid var(--ln);border-radius:16px;padding:16px;color:var(--mu)}
+.feat b{display:block;margin-bottom:4px;color:var(--ink)}
+.steps{max-width:75ch}
+table{border-collapse:collapse;width:100%;max-width:75ch}
+th,td{padding:9px 12px;border-bottom:1px solid var(--ln);text-align:left}
+@media(max-width:760px){.hero{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><a href="#accueil">Ahmed Ghazweni<small>Portfolio numérique</small></a><button id="th" type="button">Mode sombre</button></header>
+<div class="wrap"><aside><nav id="nv" aria-label="Navigation"></nav></aside><main id="app"></main></div>
+<footer>© 2026 Ahmed Ghazweni · Technologie de l’Informatique · ISET Nabeul. Résumés à vérifier avec le cours avant l’examen.</footer>
+<script>
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const M={
+digital:{n:"Digital Skills",c:"#047857",d:"Cybersécurité, prompt engineering et podcast avec NotebookLM.",s:[
+["Se protéger sur Internet","d",[["Triangle CIA","Confidentialité, intégrité, disponibilité : toute attaque vise au moins l’une des trois."],["Virus","S’attache à un fichier hôte et ne se propage pas seul (Melissa, 1999)."],["Ver","Programme autonome qui se copie à travers le réseau (ILOVEYOU, Conficker)."],["Cheval de Troie","Se présente comme un logiciel utile mais ouvre une porte dérobée ou vole des données."],["Ransomware","Chiffre les fichiers puis exige une rançon (WannaCry, 2017, qui se propageait comme un ver)."],["Gravité","En moyenne : ransomware, ver, trojan, virus, adware. Cela dépend toujours de ce qu’on a à perdre."]]],
+["Phishing, mots de passe, sauvegarde","l",["Indices d’un e-mail frauduleux : domaine douteux (paypa1), urgence ou menace, salutation générique, lien dont l’adresse réelle diffère, pièce jointe inattendue (.zip, .docm), fautes.","Survoler un lien sans cliquer : le vrai domaine est juste avant le premier « / ».","Un bon mot de passe est long, unique et imprévisible : phrase de passe de 4 à 6 mots au hasard, 12 caractères minimum, un gestionnaire pour les retenir.","Double authentification : clé physique FIDO2 (très élevé), application TOTP (bon), SMS (moyen).","Règle 3-2-1 : 3 copies, 2 supports différents, 1 copie hors site. C’est la meilleure parade au ransomware.","Si j’ai cliqué : fermer la page, déconnecter la machine, changer les mots de passe depuis un appareil sain, lancer l’antivirus, prévenir le service informatique."]],
+["Prompt engineering","d",[["C.R.A.D.E.F.V.","Contexte, Rôle, Action, Données, Exigences, Format, Vérification. Pas besoin de tout mettre à chaque fois."],["Itérer","Version 1, critique, version 2, contrôle des faits, format final."],["Vérifier","Une IA peut se tromper : tester la commande, comparer au cours, citer les sources."]]],
+["Exemple de prompt amélioré","c","Je suis étudiant en L1 informatique. Explique chmod 755 et chmod 644\nen français simple, moins de 250 mots, sous forme de tableau puis\ndeux exemples de commandes. Signale ce qui doit être vérifié."],
+["Podcast avec NotebookLM","l",["Créer un notebook, puis ajouter le PDF du cours comme source.","Poser des questions pour comprendre : synthèse, 10 questions de révision, notion difficile.","Générer l’Audio Overview en français, écouter, puis comparer avec le PDF.","Garder les prompts et noter une amélioration possible."]]]},
+algo:{n:"Algorithmique",c:"#0e7490",d:"Variables, affectation, analyse d’un problème, chaînes de caractères.",s:[
+["Les bases","d",[["Variable","Espace mémoire nommé dont la valeur peut changer. Une constante garde toujours la même valeur."],["Types","entier, réel, caractère, chaîne, booléen."],["Affectation ←","Se lit de droite à gauche : on calcule l’expression, puis on range le résultat dans la variable."],["Lire / Ecrire","Lire(x) demande une valeur ; ECRIRE(…) affiche un texte ou un résultat."]]],
+["Échanger deux variables","c","tampon ← a\na ← b\nb ← tampon"],
+["Analyser avant de coder","l",["Comprendre : lire l’énoncé, trouver l’objectif réel, reformuler.","Identifier : entrées, sortie, contraintes (types, bornes, règles métier) et cas limites.","Structurer : découper en étapes, puis valider à la main sur plusieurs cas, y compris les cas limites.","Année bissextile : divisible par 4 et non par 100, ou divisible par 400."]],
+["Chaînes de caractères","d",[["Indices","De 0 à Longueur(ch)-1. On parcourt avec une boucle Pour."],["Fonctions","Longueur, Concat, Copier(Ch, Pos, L), Position(Ch1, Ch2) qui rend 0 si absent, Couper."],["Palindrome","Comparer ch[i] avec ch[n-1-i] : une seule différence suffit pour conclure que ce n’est pas un palindrome."]]],
+["Compter les voyelles","c","nbVoyelles ← 0\nPour i de 0 à Longueur(mot)-1 Faire\n  SI mot[i] = 'A' OU mot[i] = 'E' OU mot[i] = 'I'\n     OU mot[i] = 'O' OU mot[i] = 'U' ALORS\n    nbVoyelles ← nbVoyelles + 1\n  FIN SI\nFinPour"]]},
+c:{n:"Langage C",c:"#b45309",d:"Structure d’un programme, types, conditions, boucles, tableaux, chaînes, fonctions.",s:[
+["Les bases","d",[["Programme","#include, #define, fonctions, puis main. Chaque instruction se termine par « ; »."],["Types","int, float, double, char. Pas de type booléen : 0 vaut faux, tout le reste vaut vrai."],["Opérateurs","5 / 2 donne 2 avec deux entiers, 5.0 / 2 donne 2.5. % ne marche que sur des entiers. == compare, = affecte."],["Entrées-sorties","printf avec %d %f %c %s. scanf utilise &variable, sauf pour une chaîne."]]],
+["Structures de contrôle","l",["if / else et switch (chaque case se termine par break).","for quand le nombre de tours est connu ; while teste avant ; do … while s’exécute au moins une fois.","break sort de la boucle, continue passe à l’itération suivante."]],
+["Tableaux et chaînes","l",["Un tableau de N éléments a pour indices 0 à N-1 ; sa taille doit être une constante.","Une chaîne est un tableau de char terminé par le caractère nul « \\0 » : un tableau de N cases contient au plus N-1 lettres.","string.h : strlen, strcpy, strcat, strcmp. On ne peut pas écrire nom = \"abc\" après la déclaration.","Tri par sélection : chercher le plus petit, le placer en première position, recommencer à partir de la suivante."]],
+["Fonctions : passage par adresse","c","#include <stdio.h>\nvoid echange(int *x, int *y){\n  int tampon = *x;\n  *x = *y;\n  *y = tampon;\n}\nint main(){\n  int a = 8, b = 3;\n  echange(&a, &b);   /* a = 3, b = 8 */\n  return 0;\n}"],
+["Structures","l",["struct regroupe des champs de types différents ; typedef évite de répéter le mot struct.","Accès avec le point (e.age) ou, depuis un pointeur, avec la flèche (p->age).","Par valeur, la fonction travaille sur une copie ; par adresse, elle modifie la variable de l’appelant."]]]},
+systeme:{n:"Atelier système",c:"#4f46e5",d:"Linux, redirections, filtres, éditeur vi, scripts Bash et comparaison CMD / PowerShell.",s:[
+["Commandes essentielles","d",[["pwd, cd, ls","Répertoire courant, changer de dossier, lister (ls -l détails, ls -a fichiers cachés)."],["mkdir -p","Crée un dossier et ses parents manquants."],["touch, cp, mv, rm","Créer un fichier vide, copier, déplacer ou renommer, supprimer (sans corbeille)."],["cat, more, less","Afficher un fichier, entièrement ou page par page."],["man, --help","Documentation d’une commande."]]],
+["Chemins et jokers","d",[["Chemins","Absolu : commence par /. ~ est le répertoire personnel, . le répertoire courant, .. le parent."],["*","Zéro ou plusieurs caractères : ls *.txt"],["?","Exactement un caractère : doc?.txt prend doc1.txt mais pas doc10.txt."],["[ ]","Un caractère parmi une liste ou une plage : doc[1-3].txt, doc[13].txt."]]],
+["Redirections et tubes","d",[[">","Écrase le fichier avec la sortie standard."],[">>","Ajoute à la fin du fichier."],["2>","Redirige les messages d’erreur."],["<","La commande lit son entrée dans un fichier."],["|","Envoie la sortie d’une commande vers l’entrée de la suivante : who | wc -l"]]],
+["Filtres et recherche","c","find /usr/include -name \"std*.h\"\ngrep -v \"Mohamed\" agenda.txt\ncut -d: -f7 /etc/passwd | sort | uniq | wc -l\nhead -n 7 /etc/passwd | tail -n 1\nsort -r etudiants.txt | head -n 2"],
+["Liens, permissions, vi","d",[["ln / ln -s","Lien physique : même inode, les données survivent à la suppression de l’original. Lien symbolique : son propre inode, il devient cassé si la cible disparaît."],["chmod","r = 4, w = 2, x = 1. chmod 750 donne rwx pour le propriétaire, r-x pour le groupe, rien pour les autres."],["vi","i pour insérer, Esc pour revenir au mode commande, dd supprime une ligne, yy copie, p colle, /mot cherche."],["Sortir de vi",":wq sauvegarde et quitte, :q! quitte sans sauvegarder, :%s/ancien/nouveau/g remplace partout."]]],
+["Script Bash : somme des pairs jusqu’à N","c","#!/bin/bash\nread N\nsomme=0\ni=2\nwhile [ \"$i\" -le \"$N\" ]; do\n  somme=$((somme + i))\n  i=$((i + 2))\ndone\necho \"$somme\""],
+["CMD et PowerShell","d",[["CMD","Les commandes produisent du texte : tasklist | findstr chrome."],["PowerShell","Les commandes produisent des objets : Get-Process | Where-Object {$_.CPU -gt 100}."],["Équivalents","dir = Get-ChildItem, cd = Set-Location, copy = Copy-Item, taskkill = Stop-Process."]]]]},
+archi:{n:"Architecture et numération",c:"#be123c",d:"Histoire, composants, bases 2/8/10/16, compléments, mémoires, portes logiques, Unicode.",s:[
+["Histoire","d",[["1642","Pascaline (Blaise Pascal) : addition et soustraction."],["1840","Machine analytique (Babbage) : cartes perforées, mémoire et unité de calcul."],["1946","ENIAC : premier ordinateur électronique, 17 468 tubes."],["1951","Machine de l’IAS (Von Neumann) : programme enregistré en mémoire comme les données."],["1948 / 1971","Transistor, puis microprocesseur Intel 4004 (bus de 4 bits, 2 300 transistors)."]]],
+["Composants et mémoires","d",[["Carte mère","Relie les composants par des bus : socket (processeur), chipset, BIOS en mémoire morte, horloge temps réel, slots de RAM."],["Von Neumann / Harvard","Mémoire commune pour programme et données, ou deux mémoires séparées."],["SRAM / DRAM","SRAM : 6 transistors, rapide, sans rafraîchissement (caches). DRAM : 1 transistor + 1 condensateur, dense, rafraîchie toutes les 64 ms."],["HDD / SSD","Disque mécanique à plateaux, ou mémoire Flash sans pièce mobile, plus rapide et plus silencieuse."]]],
+["Bases et compléments","l",["n bits représentent 2ⁿ valeurs : de 0 à 2ⁿ − 1 sans signe.","Décimal vers base b : divisions successives, restes lus de bas en haut. 156 = 1001 1100₂ = 234₈ = 9C₁₆.","Binaire vers octal : groupes de 3 bits ; vers hexadécimal : groupes de 4 bits, depuis la droite.","Complément à 2 : inverser tous les bits puis ajouter 1 (−N = 2ⁿ − N). Sur 8 bits, la plage va de −128 à +127.","Soustraction : A − B = A + (complément à 2 de B), retenue sortante ignorée."]],
+["Portes logiques","d",[["NON, ET, OU","Négation, produit, somme logique. NAND et NOR sont universelles."],["XOR","Vaut 1 quand les deux entrées diffèrent."],["Demi-additionneur","S = A ⊕ B et C = A · B."],["Additionneur complet","S = A ⊕ B ⊕ Cin et Cout = A · B + Cin · (A ⊕ B)."]]],
+["Codage des caractères","l",["ASCII sur 7 bits : « A » = 65, « a » = 97, « 0 » = 48 (écart de 32 entre majuscule et minuscule).","UTF-8 : 1 à 4 octets, compatible ASCII. « é » (U+00E9) devient C3 A9.","IEEE 754 simple précision : 1 bit de signe, 8 bits d’exposant (biais 127), 23 bits de mantisse."]]]},
+sem:{n:"Systèmes embarqués",c:"#0369a1",d:"Fondements des SE : caractéristiques, temps réel, chaînes fonctionnelles, processeurs.",s:[
+["Définitions","d",[["Système embarqué","Système autonome qui intègre logiciel et matériel conçus ensemble pour une fonction précise."],["Système mobile","Portatif et utilisable de façon autonome en déplacement."],["Collectif / personnel","Collectif (train, centrale) : vie longue, sûreté forte, coût élevé. Personnel (téléphone) : mise sur le marché rapide, coût accessible."]]],
+["Caractéristiques","l",["Autonomie : de fonctionnement, fonctionnelle, énergétique.","Spécificité, réactivité, robustesse et fiabilité, faible consommation, flexibilité (reprogrammation, FPGA, composants IP).","Volume et poids réduits, coût bas, cycle de renouvellement court (time to market)."]],
+["Temps réel","d",[["Idée clé","Temps réel ne veut pas dire rapide : il faut respecter l’échéance de façon prévisible. Le pire cas compte, pas la moyenne."],["Dur","Une échéance manquée fait échouer le système (frein ABS, trafic aérien)."],["Souple","Le retard est gênant mais sans gravité (affichage de données)."],["Ferme","Le résultat tardif n’a plus de valeur et est écarté (image vidéo)."]]],
+["Chaînes fonctionnelles","d",[["Information","Acquérir, Traiter, Communiquer."],["Énergie","Alimenter, Distribuer, Convertir, Transmettre et adapter, Agir."],["Linéarité","Si e1 donne s1 et e2 donne s2, alors a·e1 + b·e2 donne a·s1 + b·s2. s = a·e + b avec b ≠ 0 n’est pas linéaire."]]],
+["Processeurs d’un SEM","d",[["µP","CISC (instructions riches, plusieurs cycles) ou RISC (instructions simples, souvent 1 cycle, moins de consommation)."],["DSP","Optimisé pour le signal : multiplication-addition (MAC) en 1 cycle, architecture Harvard."],["µC","Processeur, mémoires et entrées-sorties sur une seule puce."],["ASIC, FPGA, SoC","Circuit sur mesure ; circuit reconfigurable ; système complet sur puce."]]]]}
+};
+const ids=Object.keys(M);
+const Q=[
+["Quel malware se copie seul à travers le réseau, sans action de l’utilisateur ?",["Virus","Ver","Adware","Keylogger"],1,"Le ver est autonome ; le virus a besoin d’un fichier hôte."],
+["Quelle méthode de double authentification est la plus sûre ?",["SMS","Question secrète","Clé physique FIDO2","E-mail"],2,"La clé FIDO2 résiste au phishing ; le SMS peut être détourné."],
+["Quelle commande affiche les fichiers cachés avec les détails ?",["ls","ls -la","pwd","cd .."],1,"-l donne les détails, -a affiche les fichiers cachés."],
+["Quels fichiers sélectionne doc[1-3].txt ?",["doc1, doc2, doc3","doc10 seulement","doc1 et doc3 seulement","Tous les doc"],0,"Une plage [1-3] couvre 1, 2 et 3 ; doc10 a deux caractères."],
+["Quel opérateur ajoute la sortie à la fin d’un fichier ?",[">",">>","<","2>"],1,"> écrase, >> ajoute."],
+["En C, que vaut 5 / 2 avec deux entiers ?",["2.5","3","2","0"],2,"La division de deux entiers donne un quotient entier."],
+["Dernier indice d’un tableau de N éléments en C ?",["N","N + 1","1","N − 1"],3,"Les indices vont de 0 à N − 1."],
+["Complément à 2 de 5 sur 4 bits ?",["1010","1011","1101","0101"],1,"0101 inversé donne 1010, plus 1 donne 1011."],
+["Un système temps réel doit avant tout…",["Être le plus rapide possible","Respecter ses échéances de façon prévisible","Utiliser Linux","Avoir un gros processeur"],1,"Temps réel signifie prédictibilité, pas rapidité."],
+["Pourquoi une DRAM doit-elle être rafraîchie ?",["Elle a 6 transistors","Son condensateur se décharge","Elle est non volatile","Sa lecture est lente"],1,"La charge du condensateur fuit en quelques millisecondes."]];
+const CK=["Le site est accessible en ligne via GitHub Pages","Une page existe pour chaque module","Chaque production indique les outils utilisés","Les sources sont citées","Aucun mot de passe, clé ou donnée personnelle n’est publié","Le README.md est complet","Le site fonctionne sur téléphone","La présentation orale est préparée"];
+const TREE="portfolio-numerique/\n├── index.html\n├── css/style.css\n├── js/script.js\n├── digital-skills/\n├── developpement/\n├── systemes/\n├── medias/\n└── README.md";
+let qi=0,sc=0;
+const lk=(i,t,h)=>`<a href="#${i}"${h==i?" aria-current=page":""}>${t}</a>`;
+const blk=([h,t,d])=>`<h2>${h}</h2>`+(t=="d"?`<dl>${d.map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join("")}</dl>`:t=="l"?`<ul>${d.map(x=>`<li>${x}</li>`).join("")}</ul>`:`<pre>${esc(d)}</pre>`);
+const mod=i=>`<div class=mh style="--c:${M[i].c}"><span class=gl>${G[i]}</span><div><h1>${M[i].n}</h1><p class=lead>${M[i].d}</p><button class=btn onclick="start('m','${i}')">Écouter cette fiche</button></div></div><div id=stage></div>`+M[i].s.map(blk).join("")+`<details><summary>Fiche Transparence IA (à compléter)</summary><p>Outils utilisés : …<br>Rôle de l’IA : …<br>Ce que j’ai fait moi-même : vérifications, corrections, choix.<br>Sources vérifiées : mes cours de l’ISET.</p></details>`;
+const home=()=>`<section class=hero><div><p class=pt>Portfolio numérique · Année 2026–2027</p><h1>Ahmed Ghazweni</h1><p class=ty aria-hidden=true><span id=ty></span><u></u></p><p class=lead>Étudiant en 1re année Technologie de l’Informatique à l’ISET de Nabeul. Fiches, quiz et podcasts pour réviser chaque matière : je lis, j’écoute ou je me teste.</p><div class=cta><a href="#ecoute">Écouter une fiche</a><a href="#podcasts">Podcasts</a><a href="#quiz">Quiz</a></div></div><div class=me><div class=av>AG</div><p class=nm>Ahmed Ghazweni</p><p class=sb>Technologie de l’Informatique · ISET Nabeul</p><dl><dt>Filière</dt><dd>Technologie de l’Informatique</dd><dt>Niveau</dt><dd>1re année</dd><dt>Matières</dt><dd>${ids.length}</dd><dt>Compétences</dt><dd>C · Linux · Algorithmique</dd><dt>Outils</dt><dd>VS Code · Git · Claude</dd></dl></div></section><div class=stats><div><b>${ids.length}</b>matières</div><div><b>${Q.length}</b>questions de quiz</div><div><b>${ids.length}</b>épisodes de podcast</div><div><b>${ids.length}</b>fiches à écouter</div></div><h2>Mes matières</h2><div class=chips>${["Tout","Digital Skills","Développement","Systèmes"].map((c,j)=>`<button${j?"":" class=on"} onclick="flt(this,'${j?c:""}')">${c}</button>`).join("")}</div><div class=grid>${ids.map(i=>`<a class=card data-cat="${CAT[i]}" style="--c:${M[i].c}" href="#${i}"><span class=gl>${G[i]}</span><small>${CAT[i]}</small><h3>${M[i].n}</h3><p>${M[i].d}</p><span class=tags><i>Fiche</i><i>Audio</i><i>Podcast</i></span></a>`).join("")}</div>`;
+function quiz(){
+ if(qi>=Q.length)return `<h1>Résultat</h1><p class=big>${sc} / ${Q.length}</p><p class=lead>${sc>=8?"Très bien, tu maîtrises l’essentiel.":sc>=5?"Pas mal. Relis les fiches des questions ratées.":"Reprends les fiches des matières, puis refais le quiz."}</p><button class=btn onclick="qi=0;sc=0;go()">Recommencer</button>`;
+ const q=Q[qi];
+ return `<h1>Quiz de révision</h1><p class=lead>Question ${qi+1} sur ${Q.length}</p><h2>${q[0]}</h2><div class=opts>${q[1].map((o,i)=>`<button class=opt onclick="ans(${i})">${o}</button>`).join("")}</div><p id=fb></p>`}
+function ans(i){const q=Q[qi];document.querySelectorAll(".opt").forEach((x,j)=>{x.disabled=true;if(j==q[2])x.classList.add("ok");else if(j==i)x.classList.add("ko")});if(i==q[2])sc++;document.getElementById("fb").innerHTML=`<b>${i==q[2]?"Correct.":"Raté."}</b> ${q[3]}<br><button class=btn onclick="qi++;go()">${qi+1<Q.length?"Question suivante":"Voir le résultat"}</button>`}
+function pf(){let s=[];try{s=JSON.parse(localStorage.getItem("chk")||"[]")}catch(e){}
+ return `<h1>Portfolio numérique</h1><p class=lead>Checklist de rendu du guide : coche chaque point quand il est terminé.</p>`+CK.map((t,i)=>`<label class=chk><input type=checkbox ${s.includes(i)?"checked":""} onchange="tg(${i},this.checked)"><span>${t}</span></label>`).join("")+`<h2>Structure du dépôt GitHub</h2><pre>${esc(TREE)}</pre>`}
+function tg(i,v){try{let s=JSON.parse(localStorage.getItem("chk")||"[]").filter(x=>x!=i);if(v)s.push(i);localStorage.setItem("chk",JSON.stringify(s))}catch(e){}}
+function go(){
+ const h=location.hash.slice(1)||"accueil";
+ document.getElementById("nv").innerHTML=lk("accueil","Accueil",h)+"<b>Matières</b>"+ids.map(i=>lk(i,M[i].n,h)).join("")+"<b>Mes ressources</b>"+lk("ecoute","Réviser en écoutant",h)+lk("podcasts","Podcasts",h)+lk("quiz","Quiz de révision",h)+lk("portfolio","Portfolio numérique",h);
+ document.getElementById("app").innerHTML=h=="quiz"?quiz():h=="portfolio"?pf():h=="ecoute"?listen():h=="podcasts"?pod():M[h]?mod(h):home()+extra();document.getElementById("app").style.setProperty("--mc",M[h]?M[h].c:"var(--br)");typing();
+ document.title=(M[h]?M[h].n:h=="quiz"?"Quiz":h=="portfolio"?"Portfolio":h=="ecoute"?"Réviser en écoutant":h=="podcasts"?"Podcasts":"Accueil")+" — Ahmed Ghazweni";
+}
+window.onhashchange=()=>{stopP();qi=0;sc=0;go();window.scrollTo(0,0)};
+const S=window.speechSynthesis,G={digital:"AI",algo:"∑",c:"{ }",systeme:"$_",archi:"0x",sem:"µC"};
+let P={items:[],i:0,on:false,r:1,k:0},tv;
+function mono(i){const m=M[i],it=[{t:`Fiche ${m.n}. ${m.d}`,h:1}];m.s.forEach(([h,t,d])=>{it.push({t:h,h:1});if(t=="d")d.forEach(([a,b])=>it.push({t:`${a} : ${b}`}));else if(t=="l")d.forEach(x=>it.push({t:x}));else it.push({t:"Un exemple de code est affiché à l’écran."})});return it}
+function dial(i){const m=M[i],it=[{t:`Bienvenue dans le podcast de révision : ${m.n}. On fait le tour de l’essentiel.`,n:"Prof"}];m.s.forEach(([h,t,d])=>{if(t=="c")return;it.push({t:`On passe à : ${h}.`,n:"Prof"});if(t=="d")d.forEach(([a,b])=>{it.push({t:`Peux-tu m’expliquer : ${a} ?`,n:"Élève"});it.push({t:b,n:"Prof"})});else d.forEach(x=>it.push({t:x,n:"Prof"}))});it.push({t:"Voilà l’essentiel. Fais maintenant le quiz pour vérifier.",n:"Prof"});return it}
+function start(kind,i){stopP();const st=document.getElementById("stage");if(!S){st.innerHTML="<p class=note>Ton navigateur ne sait pas lire à voix haute. Essaie Chrome, Edge ou Safari.</p>";return}
+ P={items:kind=="m"?mono(i):dial(i),i:0,on:true,r:1,k:0};
+ st.innerHTML=`<section class=stage><div class=sh><span>${kind=="m"?"Lecture":"Épisode"} · ${M[i].n}</span><span id=pt></span></div><div class=bar><i id=pb></i></div><div class=ctl><button onclick="jump(-1)" aria-label="Ligne précédente">⏮</button><button id=pp class=go onclick="tog()" aria-label="Lecture ou pause">⏸</button><button onclick="jump(1)" aria-label="Ligne suivante">⏭</button><label>Vitesse <select onchange="P.r=+this.value;if(P.on)say()"><option value=.8>0,8×</option><option value=1 selected>1×</option><option value=1.25>1,25×</option><option value=1.5>1,5×</option></select></label></div><div class=tr id=tr>${P.items.map((x,j)=>`<p class="ln${x.h?" hd":""}" onclick="P.on=true;P.i=${j};say()">${x.n?`<b>${x.n}</b>`:""}${esc(x.t)}</p>`).join("")}</div><p class=note>La voix vient de ton appareil. Si elle parle anglais, installe une voix française dans les réglages. Clique sur une ligne pour y sauter.</p></section>`;
+ st.scrollIntoView({block:"start",behavior:"smooth"});say()}
+function say(){if(!S)return;S.cancel();const it=P.items[P.i];if(!it){P.on=false;P.i=P.items.length-1;return ui()}const k=++P.k,u=new SpeechSynthesisUtterance(it.t),v=S.getVoices().filter(x=>/^fr/i.test(x.lang)),el=it.n=="Élève";u.lang="fr-FR";u.rate=P.r;u.pitch=el?1.3:1;if(v.length)u.voice=v[el&&v.length>1?1:0];u.onend=()=>{if(P.on&&k==P.k){P.i++;say()}};setTimeout(()=>{if(k==P.k)S.speak(u)},60);ui()}
+function tog(){P.on=!P.on;if(P.on)say();else{S.cancel();P.k++;ui()}}
+function jump(d){P.i=Math.min(Math.max(P.i+d,0),P.items.length-1);if(P.on)say();else ui()}
+function stopP(){if(S)S.cancel();P.on=false;P.k++}
+function ui(){const t=document.getElementById("tr");if(!t)return;[...t.children].forEach((e,j)=>e.classList.toggle("on",j==P.i));const e=t.children[P.i];if(e)t.scrollTo({top:e.offsetTop-36,behavior:"smooth"});document.getElementById("pb").style.width=(P.i+1)/P.items.length*100+"%";document.getElementById("pp").textContent=P.on?"⏸":"▶";document.getElementById("pt").textContent=(P.i+1)+" / "+P.items.length}
+const CAT={digital:"Digital Skills",algo:"Développement",c:"Développement",systeme:"Systèmes",archi:"Systèmes",sem:"Systèmes"};
+function flt(b,c){document.querySelectorAll(".chips button").forEach(x=>x.classList.toggle("on",x==b));document.querySelectorAll(".grid .card").forEach(e=>e.style.display=c&&e.dataset.cat!=c?"none":"")}
+const extra=()=>`<h2>Ce que contient ce portfolio</h2><div class=feat>${[["Fiches de cours","Les notions clés de chaque matière, résumées à partir de mes cours."],["Lecture audio","La fiche lue à voix haute, ligne par ligne, à la vitesse de mon choix."],["Podcasts","Un épisode prof et élève par matière, plus mon audio NotebookLM."],["Quiz de révision",`${Q.length} questions corrigées instantanément.`],["Checklist de rendu","Les points du guide à cocher avant la remise."],["Transparence IA","Les outils utilisés et ma part de travail, page par page."]].map(([a,b])=>`<div><b>${a}</b>${b}</div>`).join("")}</div><h2>Parcours du semestre</h2><ol class=steps>${[["Mise en place","GitHub, dépôt et site en ligne"],["Digital Skills","cybersécurité, prompt engineering, création de contenu"],["Développement","Python, langage C, algorithmique"],["Systèmes et fondements","systèmes d’exploitation, architecture, électronique"],["Développement web","finalisation du site et présentation orale"]].map(([a,b])=>`<li><b>${a}</b> — ${b}</li>`).join("")}</ol><h2>Outils utilisés</h2><table><tr><th>Besoin<th>Outils<tr><td>Rédaction, explication, correction de code<td>Claude, ChatGPT<tr><td>Résumés, podcasts, cartes mentales<td>NotebookLM<tr><td>Présentations et visuels<td>PowerPoint, Gamma, Canva<tr><td>Code et hébergement<td>VS Code, Git, GitHub Pages</table><h2>Transparence IA</h2><dl><dt>Outils utilisés</dt><dd>Claude (structure du site, premiers jets des résumés).</dd><dt>Rôle de l’IA</dt><dd>Proposer la structure HTML, CSS et JavaScript et un premier résumé de chaque cours.</dd><dt>Ce que j’ai fait moi-même</dt><dd>Relecture et correction à partir de mes cours, choix du contenu, ajout de mes productions.</dd><dt>Sources vérifiées</dt><dd>Supports de cours de l’ISET Nabeul.</dd></dl>`;
+const listen=()=>`<h1>Réviser en écoutant</h1><p class=lead>Choisis une matière : la fiche est lue à voix haute et la ligne en cours s’allume. Pratique dans le bus ou avant de dormir.</p><div class=pick>${ids.map(i=>`<button class=chip style="--c:${M[i].c}" onclick="start('m','${i}')"><span>${G[i]}</span>${M[i].n}</button>`).join("")}</div><div id=stage></div>`;
+const mins=i=>Math.max(1,Math.round(dial(i).map(x=>x.t).join(" ").split(" ").length/150));
+const pod=()=>`<h1>Podcasts</h1><p class=lead>Un épisode par matière : un prof et un élève se posent les questions du cours. Les voix sont générées par ton navigateur.</p><div id=stage></div><div class=grid>${ids.map(i=>`<button class="card ep" style="--c:${M[i].c}" onclick="start('p','${i}')"><span class=gl>${G[i]}</span><h3>${M[i].n}</h3><p>Épisode · environ ${mins(i)} min</p></button>`).join("")}</div><h2>Mon podcast NotebookLM</h2><p class=lead>Génère l’Audio Overview dans NotebookLM, télécharge le fichier audio, puis charge-le ici pour l’écouter. Il n’est pas enregistré sur le site.</p><input type=file accept="audio/*" onchange="loadA(this)"><audio id=au controls hidden></audio>`;
+function loadA(f){const a=document.getElementById("au");if(f.files[0]){a.src=URL.createObjectURL(f.files[0]);a.hidden=false;a.play().catch(()=>{})}}
+function typing(){clearInterval(tv);const e=document.getElementById("ty");if(!e)return;const L=["ls -la ~/TP_Linux","−5 = 1111 1011₂  (complément à 2)","while [ \"$i\" -le \"$N\" ]; do","A − B = A + (¬B + 1)","echange(&a, &b);","Acquérir → Traiter → Communiquer"];let n=0,c=0,d=1;if(matchMedia("(prefers-reduced-motion:reduce)").matches){e.textContent=L[0];return}tv=setInterval(()=>{if(!e.isConnected){clearInterval(tv);return}c+=d;e.textContent=L[n].slice(0,c);if(c>=L[n].length+14)d=-1;if(c<=0){d=1;n=(n+1)%L.length}},70)}
+const R=document.documentElement,th=document.getElementById("th");
+function sth(t){R.dataset.theme=t;th.textContent=t=="dark"?"Mode clair":"Mode sombre";try{localStorage.setItem("th",t)}catch(e){}}
+let t0;try{t0=localStorage.getItem("th")}catch(e){}
+sth(t0||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"));
+th.onclick=()=>sth(R.dataset.theme=="dark"?"light":"dark");
+go();
+</script>
+</body>
+</html>
